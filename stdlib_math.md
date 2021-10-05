@@ -146,7 +146,7 @@ Create a linearly spaced one-dimensional array.
 function linspace(start, end) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
-  real{sp, dp, qp} :: res
+  real{sp, dp, qp} :: res(DEFAULT_LINSPACE_LENGTH)
 ```
 
 ```
@@ -154,12 +154,13 @@ function linspace(start, end, n) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
   integer, intent(in) :: n
-  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res
+  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(n)
 ```
 
 `start` and `end` must have the same type and kind.
 `res` must have the same type and kind as `start` and `end` if their type is `real` or `complex`.
 Otherwise, the type and kind of `res` are `real(dp)`.
+The value of `DEFAULT_LINSPACE_LENGTH` is 100.
 
 ### Arguments
 
@@ -197,7 +198,7 @@ Create a logarithmically spaced one-dimensional array.
 function logspace(start, end) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
-  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res
+  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(DEFAULT_LOGSPACE_LENGTH)
 ```
 
 ```
@@ -205,21 +206,22 @@ function logspace(start, end, n) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
   integer, intent(in) :: n
-  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res
+  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(n)
 ```
 
 ```
-function logspace(start, end, n) result(res)
+function logspace(start, end, n, base) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
   integer, intent(in) :: n
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: base
-  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res
+  {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(n)
 ```
 
 `start` and `end` must have the same type and kind.
 `res` must have the same type and kind as `start` and `end` if their type is `real` or `complex`.
 Otherwise, the type and kind of `res` are `real(dp)`.
+The value of `DEFAULT_LOGSPACE_LENGTH` is 50.
 
 ### Arguments
 
