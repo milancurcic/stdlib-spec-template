@@ -15,7 +15,7 @@ values of given spacing, within a given interval.
 
 ### Interface
 
-```
+```fortran
 pure function arange(start, end, step) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}}, intent(in) :: start
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}}, intent(in), optional :: end, step
@@ -37,7 +37,7 @@ The result is an array of fixed-spaced values from `start` to `end` with an incr
 
 ### Example
 
-```
+```fortran
 program example_arange
   use stdlib_math, only: arange
 
@@ -65,7 +65,7 @@ Returns a value in interval [xmin, xmax] (inclusive) that is closest to the inpu
 
 ### Interface
 
-```
+```fortran
 elemental function clip(x, xmin, xmax) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}}, intent(in) :: x
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}}, intent(in) :: xmin
@@ -87,7 +87,7 @@ Result is `xmin` if `x < xmin`, `xmax` if `x > xmax`, and `x` otherwise.
 
 ## Example
 
-```
+```fortran
 program example_clip
   use stdlib_math, only: clip
   implicit none
@@ -106,7 +106,7 @@ Returns the greatest common denominator of two numbers.
 
 ### Interface
 
-```
+```fortran
 elemental function gcd(a, b) result(res)
   integer{int8, int16, int32, int64}, intent(in) :: a
   integer{int8, int16, int32, int64}, intent(in) :: b
@@ -142,14 +142,14 @@ Create a linearly spaced one-dimensional array.
 
 ### Interface
 
-```
+```fortran
 function linspace(start, end) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
   real{sp, dp, qp} :: res(DEFAULT_LINSPACE_LENGTH)
 ```
 
-```
+```fortran
 function linspace(start, end, n) result(res)
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer{int8, int16, int32, int64}, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
@@ -164,7 +164,7 @@ The value of `DEFAULT_LINSPACE_LENGTH` is 100.
 
 ### Arguments
 
-* `start`: Starting value of the linearly spaced array 
+* `start`: Starting value of the linearly spaced array
 * `end`: Ending value of the linearly spaced array
 * `n`: Number of elements to return. Default value is 100 if omitted.
 
@@ -175,7 +175,7 @@ The number of elements in the array is `n` if present, and 100 otherwise.
 
 ### Example
 
-```
+```fortran
 program example_linspace
   use stdlib_math, only: clip
   implicit none
@@ -194,14 +194,14 @@ Create a logarithmically spaced one-dimensional array.
 
 ### Interface
 
-```
+```fortran
 function logspace(start, end) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
   {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(DEFAULT_LOGSPACE_LENGTH)
 ```
 
-```
+```fortran
 function logspace(start, end, n) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
@@ -209,7 +209,7 @@ function logspace(start, end, n) result(res)
   {real{sp, dp, qp}, complex{sp, dp, qp}} :: res(n)
 ```
 
-```
+```fortran
 function logspace(start, end, n, base) result(res)
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: start
   {integer, real{sp, dp, qp}, complex{sp, dp, qp}}, intent(in) :: end
@@ -241,7 +241,7 @@ then the type of the result is `complex` as well.
 
 ### Example
 
-```
+```fortran
 program example_logspace
   use stdlib_math, only: logspace
   implicit none

@@ -46,7 +46,7 @@
 
 #### Example 1
 
-```
+```fortran
 program example1_<procedure-name>
   ...
 end program example1_<procedure-name>
